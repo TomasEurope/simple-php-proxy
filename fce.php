@@ -1,11 +1,7 @@
 <?php
 
 // TODO remove header from remote request
-if($_SERVER['HTTP_X_FUCK'] === 'Yeah'){
-    define('DEBUG', true);
-} else {
-    define('DEBUG', false);
-}
+define('DEBUG', ($_SERVER['HTTP_X_FUCK'] === 'Yeah'));
 function d($type, $content = '', $color = 'black'): void {
     if(!DEBUG) {
         return;
