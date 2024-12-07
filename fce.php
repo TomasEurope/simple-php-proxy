@@ -16,3 +16,48 @@ function extractTargetDomain(string $host): string {
     }
     throw new \RuntimeException('Invalid host format');
 }
+
+/**
+ * Replace URLs in specific HTML attributes to route them through the proxy.
+ *
+ * Handles attributes such as `href`, `src`, and `action` in tags like
+ * <a>, <img>, <script>, <link>, and <form>.
+ *
+ * @param string $html       The original HTML content.
+ * @param string $proxyHost  The proxy host to use (e.g., "proxy.com").
+ * @return string            The modified HTML content with rewritten URLs.
+ */
+function replaceUrlsWithProxy(string $html, string $proxyHost): string {
+    // Define the attributes and tags to process
+    $attributes = ['href', 'src', 'action'];
+    $tags = ['a', 'img', 'script', 'link', 'form'];
+
+    // Build a regex pattern to match attributes within specified tags
+    $pattern = '/<(' . implode('|', $tags) . ')\s+[^>]*?(?:' . implode('|', $attributes) . ')="([^"]+)"/i';
+
+    // Callback to rewrite each matched URL
+    $callback = function ($matches) use ($proxyHost) {
+        $tag = $matches[1];       // The matched HTML tag (e.g., <a>, <form>)
+        $originalUrl = $matches[2]; // The original URL in the attribute
+
+        // Parse the URL to check for validity
+        $parsedUrl = parse_url($originalUrl);
+
+        // If the URL does not have a host (e.g., relative link), return it unchanged
+        if (!isset($parsedUrl['host'])) {
+            return $matches[0];
+        }
+
+        // Convert the domain (e.g., "example.com" to "example-com.proxy.com")
+        $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
+
+        // Reconstruct the full proxy URL, replacing the original host
+        $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://' . $proxySubdomain, $originalUrl);
+
+        // Replace the original URL with the rewritten proxy URL
+        return str_replace($originalUrl, $newUrl, $matches[0]);
+    };
+
+    // Apply the transformation to the HTML content
+    return preg_replace_callback($pattern, $callback, $html);
+}

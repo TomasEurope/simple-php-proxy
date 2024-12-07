@@ -82,6 +82,9 @@ $app->any('/{path:.*}', function (Request $request, Response $response, array $a
         $contents = $guzzleResponse->getBody()->getContents();
 
         if (!DEBUG) {
+            // Rewrite hyperlinks in the HTML to route through the proxy
+            $proxyHost = 'proxy.com'; // Replace with your actual proxy domain
+            $contents = replaceUrlsWithProxy($contents, $proxyHost);
             // Write the body contents to the response (when not debugging)
             $response->getBody()->write($contents);
         } else {
