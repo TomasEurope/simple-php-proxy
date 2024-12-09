@@ -17,7 +17,6 @@ namespace App\Config;
  */
 class MyConfig
 {
-
     /**
      * Whether debugging is enabled.
      *

@@ -3,23 +3,31 @@
 /**
  * Helper and debug functions.
  *
- * @file    Helper.php
- * @author  Tomas <studnasoft@gmail.com>
+ * @file Helper.php
+ * @author Tomas <studnasoft@gmail.com>
  * @license https://github.com/tomascc MIT
  */
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Helpers;
 
 use App\Config\MyConfig;
+use function preg_match;
 use RuntimeException;
+use function implode;
+use function parse_url;
+use function str_replace;
+use function preg_replace;
+use function preg_replace_callback;
+use function print_r;
+use function htmlspecialchars;
+use const ENT_QUOTES;
 
-readonly class Helper
+readonly final class Helper
 {
 
-
-    public function __construct(private MyConfig $myConfig)
+    public function __construct(public MyConfig $myConfig)
     {
 
     }//end __construct()
@@ -29,13 +37,13 @@ readonly class Helper
      * Extracts the target host from a proxy-formatted host.
      *
      * @param string $host The original host in proxy format.
-     *
      * @return string The extracted remote host.
-     * @throws RuntimeException If the host format is invalid.
+     * @throws \RuntimeException If the host format is invalid.
      */
     public function extractTargetHost(string $host): string
     {
         $pattern = '/^(?<host>.+?)-(?<tld>.+?)\.proxy\.com$/';
+
         if (preg_match($pattern, $host, $matches)) {
             return $matches['host'].'.'.$matches['tld'];
         }
@@ -48,9 +56,8 @@ readonly class Helper
     /**
      * Rewrites URLs in specific HTML attributes to route them through the proxy.
      *
-     * @param string $html      The original HTML content.
+     * @param string $html The original HTML content.
      * @param string $proxyHost The proxy host to use (e.g., "proxy.com").
-     *
      * @return string The modified HTML content with rewritten URLs.
      */
     public function replaceUrlsWithProxy(string $html, string $proxyHost): string
@@ -60,7 +67,7 @@ readonly class Helper
             'src',
             'action',
         ];
-        $tags       = [
+        $tags = [
             'a',
             'img',
             'script',
@@ -68,44 +75,36 @@ readonly class Helper
             'form',
         ];
 
-        $pattern = '/<('.implode('|', $tags).')\s+[^>]*?(?:'.implode('|', $attributes).')="([^"]+)"/i';
+        $pattern = '/<('.implode('|', $tags).')\s+[^>]*?(?:'.\implode('|', $attributes).')="([^"]+)"/i';
 
         $callback = static function (array $matches) use ($proxyHost): string {
             $originalUrl = $matches[2];
-            $parsedUrl   = parse_url($originalUrl);
+            $parsedUrl = parse_url($originalUrl);
 
             if (!isset($parsedUrl['host'])) {
                 return $matches[0];
             }
 
             $proxySubdomain = str_replace('.', '-', $parsedUrl['host']).'-proxy.'.$proxyHost;
-            $newUrl         = preg_replace('/^https?:\/\/[^\/]+/', 'https://'.$proxySubdomain, $originalUrl);
+            $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://'.$proxySubdomain, $originalUrl);
 
-            return str_replace($originalUrl, $newUrl, $matches[0]);
+            return \str_replace($originalUrl, $newUrl, $matches[0]);
         };
 
         return preg_replace_callback($pattern, $callback, $html);
-
     }//end replaceUrlsWithProxy()
 
 
     /**
      * Outputs debugging information in HTML format.
      *
-     * @param string $type    The type of the debug message.
-     * @param mixed  $content The content to display.
-     * @param string $color   The text color for the debug message.
-     * @param bool   $force   Whether to force output regardless of DEBUG mode.
-     *
-     * @return void
+     * @param string $type The type of the debug message.
+     * @param mixed $content The content to display.
+     * @param string $color The text color for the debug message.
+     * @param bool $force Whether to force output regardless of DEBUG mode.
      */
-    public function d(
-        string $type,
-        mixed $content='',
-        string $color='black',
-        bool $force=false
-    ): void {
-        if ($this->myConfig->debug === false && $force === false) {
+    public function d(string $type, mixed $content = '', string $color = 'black', bool $force = false): void {
+        if (false === $this->myConfig->debug && false === $force) {
             return;
         }
 
@@ -118,12 +117,10 @@ readonly class Helper
      * Starts an HTML debug output.
      *
      * @param string $host The host to display in the debug output.
-     *
-     * @return void
      */
     public function debugStart(string $host): void
     {
-        if ($this->myConfig->debug === false) {
+        if (false === $this->myConfig->debug) {
             return;
         }
 
@@ -137,12 +134,10 @@ readonly class Helper
 
     /**
      * Ends an HTML debug output.
-     *
-     * @return void
      */
     public function debugEnd(): void
     {
-        if ($this->myConfig->debug === false) {
+        if (false === $this->myConfig->debug) {
             return;
         }
 
