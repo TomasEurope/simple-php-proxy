@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="PHPCS">
-      <change afterPath="$PROJECT_DIR$/cc.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phpstan.neon.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/psalm.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/psalm.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fce.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/fce.php" afterDir="false" />
+    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="CC">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/access.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +147,7 @@
       <workItem from="1733589892212" duration="20980000" />
       <workItem from="1733661266254" duration="1157000" />
       <workItem from="1733666871108" duration="75000" />
-      <workItem from="1733752008660" duration="3248000" />
+      <workItem from="1733752008660" duration="3493000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -192,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733754747374</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="CC">
+      <option name="closed" value="true" />
+      <created>1733755321588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733755321588</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +208,7 @@
     <MESSAGE value="Nicer code" />
     <MESSAGE value="Replace URLs in PHP&#10;// TODO JavaScript" />
     <MESSAGE value="PHPCS" />
-    <option name="LAST_COMMIT_MESSAGE" value="PHPCS" />
+    <MESSAGE value="CC" />
+    <option name="LAST_COMMIT_MESSAGE" value="CC" />
   </component>
 </project>
