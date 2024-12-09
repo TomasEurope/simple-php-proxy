@@ -31,7 +31,7 @@ readonly class App
         // Record the start time of the script execution.
         $init = microtime(true);
         // Init debug.
-        $this->helper->debugStart(is_string($_SERVER['HTTP_HOST']) ?: '');
+        $this->helper->debugStart(is_string($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
         $this->helper->d('Init', date('H:i:s'), 'green');
 
         // Create a new Slim application instance.

@@ -85,7 +85,7 @@ readonly final class Helper
                 return $matches[0];
             }
 
-            $proxySubdomain = str_replace('.', '-', $parsedUrl['host']).'-proxy.'.$proxyHost;
+            $proxySubdomain = str_replace('.', '-', $parsedUrl['host']).'.'.$proxyHost;
             $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://'.$proxySubdomain, $originalUrl);
 
             return \str_replace($originalUrl, $newUrl, $matches[0]);
