@@ -1,22 +1,26 @@
 <?php
 
 /**
- * Configuration
+ * This file contains the configuration class for handling global settings
+ * within the application. It deals with enabling or disabling debugging
+ * based on specified server headers.
  *
- * @file    MyConfig.php
+ * @file Config.php
+ *
  * @author  Tomas <studnasoft@gmail.com>
  * @license https://github.com/tomascc MIT
  */
 
 declare(strict_types=1);
 
-namespace App\Config;
+namespace App;
 
 /**
  * Configuration class for global settings.
  */
-class MyConfig
+final class Config
 {
+
     /**
      * Whether debugging is enabled.
      *

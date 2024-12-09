@@ -1,31 +1,35 @@
 <?php
 
+/**
+ * Initializes the application by setting configurations and starting the main app logic.
+ *
+ * - Autoloads necessary dependencies using Composer's autoload file.
+ * - Conditionally sets error reporting based on the presence and value of a specific HTTP header.
+ * - Instantiates the configuration object and initializes application configuration.
+ * - Creates a new application instance and starts the application.
+ *
+ * @file index.php
+ *
+ * @author  Tomas <studnasoft@gmail.com>
+ * @license https://github.com/tomascc MIT
+ */
+
 namespace App;
 
-use App\Controllers\App;
-use App\Config\MyConfig;
+// Autoload dependencies (Slim, Guzzle, and other packages).
+// TODO Relative path doesn't work...?
+require '/my/proxy/vendor/autoload.php';
 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
-// Autoload dependencies (Slim, Guzzle, and other packages)
-require '../vendor/autoload.php';
-
-/*
-if(isset($_SERVER['HTTP_X_FUCK']) && $_SERVER['HTTP_X_FUCK'] === 'yeah'){
-    define('DEBUG', true);
+if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah') {
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
-} else {
-    define('DEBUG', false);
 }
-*/
 
-
-$config = new MyConfig();
+$config = new Config();
 $config->initialize();
 
-$app = new App((new Helpers\Helper($config)));
+// TODO Make Helper static?
+
+$app = new App((new Helper($config)));
 $app->start();

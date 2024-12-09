@@ -1,37 +1,58 @@
 <?php
 
 /**
- * Main file
+ * The App class is responsible for setting up and running the Slim application,
+ * forwarding HTTP requests, and handling incoming HTTP requests.
+ * It utilizes various helper methods to perform debugging and logging activities.
  *
- * @file    App.php
+ * @file App.php
+ *
  * @author  Tomas <studnasoft@gmail.com>
  * @license https://github.com/tomascc MIT
  */
 
-namespace App\Controllers;
+namespace App;
 
 // Use PSR-7 interfaces for handling HTTP requests and responses.
-use App\Helpers\Helper;
 use Exception;
+use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use RuntimeException;
 use Slim\Factory\AppFactory;
-use GuzzleHttp\Client;
 
-readonly class App
+final readonly class App
 {
+
+
+    /**
+     * Construct :)
+     *
+     * @param Helper $helper Helper object.
+     */
     public function __construct(private Helper $helper)
     {
 
     }//end __construct()
 
 
+    /**
+     * Initializes and runs the Slim application to handle incoming HTTP requests.
+     * This method sets up the application, initializes debugging, handles request forwarding,
+     * and measures execution time for performance analysis.
+     *
+     * @return void
+     */
     public function start(): void
     {
         // Record the start time of the script execution.
         $init = microtime(true);
+        if (is_string($_SERVER['HTTP_HOST']) === false || empty(trim($_SERVER['HTTP_HOST'])) === true) {
+            throw new RuntimeException();
+        }
+
         // Init debug.
-        $this->helper->debugStart(is_string($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
+        $this->helper->debugStart($_SERVER['HTTP_HOST']);
         $this->helper->d('Init', date('H:i:s'), 'green');
 
         // Create a new Slim application instance.
@@ -69,7 +90,7 @@ readonly class App
 
                     $this->helper->d('Method', $request->getMethod());
                     // Include the form data for POST, PUT, or PATCH requests.
-                    if (in_array(strtoupper($request->getMethod()), ['POST', 'PUT', 'PATCH'])) {
+                    if (in_array(strtoupper($request->getMethod()), ['POST', 'PUT', 'PATCH']) === true) {
                         $guzzleRequest['form_params'] = $request->getParsedBody();
                     }
 
@@ -98,7 +119,7 @@ readonly class App
                     // Read the response body from the target domain.
                     $contents = $guzzleResponse->getBody()->getContents();
 
-                    if ($this->helper->myConfig->debug === false) {
+                    if ($this->helper->config->debug === false) {
                         // Rewrite hyperlinks in the HTML to route through the proxy.
                         $proxyHost = 'proxy.com';
                         // Replace with your actual proxy domain.
