@@ -17,11 +17,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use GuzzleHttp\Client;
 
-class App
+readonly class App
 {
 
 
-    public function __construct(private readonly Helper $helper)
+    public function __construct(private Helper $helper)
     {
 
     }//end __construct()
