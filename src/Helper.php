@@ -12,11 +12,12 @@
  * @license https://github.com/tomascc MIT
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App;
 
 use RuntimeException;
+
 use function htmlspecialchars;
 use function implode;
 use function parse_url;
@@ -25,12 +26,11 @@ use function preg_replace;
 use function preg_replace_callback;
 use function print_r;
 use function str_replace;
+
 use const ENT_QUOTES;
 
 readonly final class Helper
 {
-
-
     /**
      * Construct :)
      *
@@ -38,8 +38,7 @@ readonly final class Helper
      */
     public function __construct(public Config $config)
     {
-
-    }//end __construct()
+    }
 
 
     /**
@@ -56,12 +55,11 @@ readonly final class Helper
         $pattern = '/^(?<host>.+?)-(?<tld>.+?)\.proxy\.com$/';
 
         if ((bool) preg_match($pattern, $host, $matches) === true) {
-            return $matches['host'].'.'.$matches['tld'];
+            return $matches['host'] . '.' . $matches['tld'];
         }
 
         throw new RuntimeException('Invalid host format');
-
-    }//end extractTargetHost()
+    }
 
 
     /**
@@ -87,28 +85,28 @@ readonly final class Helper
             'form',
         ];
 
-        $pattern = '/<('.implode('|', $tags).')\s+[^>]*?(?:'.\implode('|', $attributes).')="([^"]+)"/i';
+        $pattern = '/<(' . implode('|', $tags) . ')\s+[^>]*?(?:' . \implode('|', $attributes) . ')="([^"]+)"/i';
 
         $callback = static function (array $matches) use ($proxyHost): string {
             $originalUrl = $matches[2];
-            if (isset($originalUrl) === false
+            if (
+                isset($originalUrl) === false
                 || is_string($originalUrl) === false
                 || empty(trim($originalUrl)) === true
             ) {
-                throw new RuntimeException;
+                throw new RuntimeException();
             }
 
             $parsedUrl = parse_url($originalUrl);
 
-            $proxySubdomain = str_replace('.', '-', $parsedUrl['host']).'.'.$proxyHost;
-            $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://'.$proxySubdomain, $originalUrl);
+            $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
+            $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://' . $proxySubdomain, $originalUrl);
 
             return str_replace($originalUrl, $newUrl, $matches[0]);
         };
 
         return preg_replace_callback($pattern, $callback, $html);
-
-    }//end replaceUrlsWithProxy()
+    }
 
 
     /**
@@ -123,17 +121,16 @@ readonly final class Helper
      */
     public function d(
         string $type,
-        mixed $content='',
-        string $color='black',
-        bool $force=false
+        mixed $content = '',
+        string $color = 'black',
+        bool $force = false
     ): void {
         if ($this->config->debug === false && $force === false) {
             return;
         }
 
-        echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>".print_r($content, true).'</pre><hr />';
-
-    }//end d()
+        echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>" . print_r($content, true) . '</pre><hr />';
+    }
 
 
     /**
@@ -150,9 +147,8 @@ readonly final class Helper
         }
 
         echo '<!DOCTYPE html><html lang="en">';
-        echo '<head><title>'.htmlspecialchars($host, ENT_QUOTES, 'UTF-8').'</title></head><body>';
-
-    }//end debugStart()
+        echo '<head><title>' . htmlspecialchars($host, ENT_QUOTES, 'UTF-8') . '</title></head><body>';
+    }
 
 
     /**
@@ -167,8 +163,5 @@ readonly final class Helper
         }
 
         echo '</body></html>';
-
-    }//end debugEnd()
-
-
-}//end class
+    }
+}

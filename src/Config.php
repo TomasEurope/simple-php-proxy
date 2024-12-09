@@ -20,7 +20,6 @@ namespace App;
  */
 final class Config
 {
-
     /**
      * Whether debugging is enabled.
      *
@@ -40,8 +39,5 @@ final class Config
         if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah') {
             $this->debug = true;
         }
-
-    }//end initialize()
-
-
-}//end class
+    }
+}

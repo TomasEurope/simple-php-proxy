@@ -20,6 +20,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use RuntimeException;
 use Slim\Factory\AppFactory;
+
 use function microtime;
 use function htmlentities;
 use function in_array;
@@ -28,8 +29,6 @@ use function date;
 
 final readonly class App
 {
-
-
     /**
      * Construct :)
      *
@@ -37,8 +36,7 @@ final readonly class App
      */
     public function __construct(private Helper $helper)
     {
-
-    }//end __construct()
+    }
 
 
     /**
@@ -133,9 +131,21 @@ final readonly class App
                         $response->getBody()->write($contents);
                     } else {
                         // Debugging: Output response details.
-                        $this->helper->d('Response code', $response->getStatusCode(), $response->getStatusCode() === 200 ? 'green' : 'red');
-                        $this->helper->d('Response size', strlen($contents), $contents !== '' ? 'green' : 'red');
-                        $this->helper->d('Response preview', substr(htmlentities($contents), 0, 1000), $contents !== '' ? 'green' : 'red');
+                        $this->helper->d(
+                            'Response code',
+                            $response->getStatusCode(),
+                            $response->getStatusCode() === 200 ? 'green' : 'red'
+                        );
+                        $this->helper->d(
+                            'Response size',
+                            strlen($contents),
+                            $contents !== '' ? 'green' : 'red'
+                        );
+                        $this->helper->d(
+                            'Response preview',
+                            substr(htmlentities($contents), 0, 1000),
+                            $contents !== '' ? 'green' : 'red'
+                        );
                     }
                 } catch (Exception $e) {
                     // Handle exceptions during the proxy process.
@@ -151,18 +161,15 @@ final readonly class App
 
         // Record the time when the Slim application starts.
         $start = microtime(true);
-        $this->helper->d('Start', 'Took '.($start - $init));
+        $this->helper->d('Start', 'Took ' . ($start - $init));
 
         // Run the Slim application to handle incoming requests.
         $app->run();
 
         // Record the total execution time of the script.
-        $this->helper->d('End', 'Took '.(microtime(true) - $init));
+        $this->helper->d('End', 'Took ' . (microtime(true) - $init));
 
         // End debug.
         $this->helper->debugEnd();
-
-    }//end start()
-
-
-}//end class
+    }
+}

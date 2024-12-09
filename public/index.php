@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * Initializes the application by setting configurations and starting the main app logic.
  *
  * - Autoloads necessary dependencies using Composer's autoload file.
@@ -13,6 +13,8 @@
  * @author  Tomas <studnasoft@gmail.com>
  * @license https://github.com/tomascc MIT
  */
+
+declare(strict_types=1);
 
 namespace App;
 
