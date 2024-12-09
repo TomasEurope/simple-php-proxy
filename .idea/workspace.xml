@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="Replace URLs in PHP&#10;// TODO JavaScript">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/proxy.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/access.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/psalm.xml.dist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="PHPCS">
+      <change afterPath="$PROJECT_DIR$/phpcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fce.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/fce.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +80,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/slevomat/coding-standard" />
+      <path value="$PROJECT_DIR$/vendor/dealerdirect/phpcodesniffer-composer-installer" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -154,7 +144,7 @@
       <workItem from="1733589892212" duration="20980000" />
       <workItem from="1733661266254" duration="1157000" />
       <workItem from="1733666871108" duration="75000" />
-      <workItem from="1733752008660" duration="1624000" />
+      <workItem from="1733752008660" duration="2437000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -180,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733606056298</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="PHPCS">
+      <option name="closed" value="true" />
+      <created>1733753748897</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733753748897</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +188,7 @@
     <MESSAGE value="Init" />
     <MESSAGE value="Nicer code" />
     <MESSAGE value="Replace URLs in PHP&#10;// TODO JavaScript" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replace URLs in PHP&#10;// TODO JavaScript" />
+    <MESSAGE value="PHPCS" />
+    <option name="LAST_COMMIT_MESSAGE" value="PHPCS" />
   </component>
 </project>
