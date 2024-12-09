@@ -1,2 +1,0 @@
-127.0.0.1 - - [09/Dec/2024:16:11:40 +0100] "GET / HTTP/1.1" 200 2070 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
-127.0.0.1 - - [09/Dec/2024:16:11:41 +0100] "GET /favicon.ico HTTP/1.1" 599 948 "http://example-com.proxy.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
