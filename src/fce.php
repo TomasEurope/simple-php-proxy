@@ -1,14 +1,5 @@
 <?php
 
-// TODO remove header from remote request
-define('DEBUG', ($_SERVER['HTTP_X_FUCK'] === 'Yeah'));
-function d($type, $content = '', $color = 'black'): void {
-    if(!DEBUG) {
-        return;
-    }
-    echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>" . print_r($content, true) . "</pre><hr />";
-}
-
 function extractTargetDomain(string $host): string {
     $pattern = '/^(?<domain>.+?)-(?<tld>.+?)\.proxy\.com$/';
     if (preg_match($pattern, $host, $matches)) {
@@ -49,7 +40,7 @@ function replaceUrlsWithProxy(string $html, string $proxyHost): string {
         }
 
         // Convert the domain (e.g., "example.com" to "example-com.proxy.com")
-        $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
+        $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . 'proxy' . $proxyHost;
 
         // Reconstruct the full proxy URL, replacing the original host
         $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://' . $proxySubdomain, $originalUrl);
@@ -60,4 +51,31 @@ function replaceUrlsWithProxy(string $html, string $proxyHost): string {
 
     // Apply the transformation to the HTML content
     return preg_replace_callback($pattern, $callback, $html);
+}
+
+function d(string $type, mixed $content = '', string $color = 'black', bool $force = false): void {
+    if(!DEBUG && !$force) {
+        return;
+    }
+    echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>" . print_r($content, true) . "</pre><hr />";
+}
+
+function debugStart(string $host): void {
+    if(!DEBUG) {
+        return;
+    }
+    echo '<!DOCTYPE html>';
+    echo '<html lang="en">';
+    echo '<head>';
+    echo '<title>' . $host . '</title>';
+    echo '</head>';
+    echo '<body>';
+}
+
+function debugEnd(): void {
+    if(!DEBUG) {
+        return;
+    }
+    echo '</body>';
+    echo '</html>';
 }
