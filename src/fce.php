@@ -1,12 +1,35 @@
 <?php
 
-function extractTargetDomain(string $host): string {
-    $pattern = '/^(?<domain>.+?)-(?<tld>.+?)\.proxy\.com$/';
+/**
+ * Helper and debug functions
+ *
+ * @file    fce.php
+ * @author  Tomas <studnasoft@gmail.com>
+ * @license https://github.com/tomascc MIT
+ */
+
+
+/**
+ * Get remote host
+ *
+ * Handles attributes such as `href`, `src`, and `action` in tags like
+ * <a>, <img>, <script>, <link>, and <form>.
+ *
+ * @param string $host Our original host
+ *
+ * @return string Requested remote host
+ */
+function extractTargetHost(string $host): string
+{
+    $pattern = '/^(?<host>.+?)-(?<tld>.+?)\.proxy\.com$/';
     if (preg_match($pattern, $host, $matches)) {
-        return $matches['domain'] . '.' . $matches['tld'];
+        return $matches['host'].'.'.$matches['tld'];
     }
+
     throw new \RuntimeException('Invalid host format');
-}
+
+}//end extractTargetHost()
+
 
 /**
  * Replace URLs in specific HTML attributes to route them through the proxy.
@@ -14,23 +37,36 @@ function extractTargetDomain(string $host): string {
  * Handles attributes such as `href`, `src`, and `action` in tags like
  * <a>, <img>, <script>, <link>, and <form>.
  *
- * @param string $html       The original HTML content.
- * @param string $proxyHost  The proxy host to use (e.g., "proxy.com").
+ * @param  string $html      The original HTML content.
+ * @param  string $proxyHost The proxy host to use (e.g., "proxy.com").
+ *
  * @return string            The modified HTML content with rewritten URLs.
  */
-function replaceUrlsWithProxy(string $html, string $proxyHost): string {
-    // Define the attributes and tags to process
-    $attributes = ['href', 'src', 'action'];
-    $tags = ['a', 'img', 'script', 'link', 'form'];
+function replaceUrlsWithProxy(string $html, string $proxyHost): string
+{
+    // Define the attributes and tags to process.
+    $attributes = [
+        'href',
+        'src',
+        'action',
+    ];
+    $tags       = [
+        'a',
+        'img',
+        'script',
+        'link',
+        'form',
+    ];
 
     // Build a regex pattern to match attributes within specified tags
-    $pattern = '/<(' . implode('|', $tags) . ')\s+[^>]*?(?:' . implode('|', $attributes) . ')="([^"]+)"/i';
+    $pattern = '/<('.implode('|', $tags).')\s+[^>]*?(?:'.implode('|', $attributes).')="([^"]+)"/i';
 
     // Callback to rewrite each matched URL
     $callback = function ($matches) use ($proxyHost) {
-        $tag = $matches[1];       // The matched HTML tag (e.g., <a>, <form>)
-        $originalUrl = $matches[2]; // The original URL in the attribute
-
+        $tag = $matches[1];
+        // The matched HTML tag (e.g., <a>, <form>)
+        $originalUrl = $matches[2];
+        // The original URL in the attribute
         // Parse the URL to check for validity
         $parsedUrl = parse_url($originalUrl);
 
@@ -40,10 +76,10 @@ function replaceUrlsWithProxy(string $html, string $proxyHost): string {
         }
 
         // Convert the domain (e.g., "example.com" to "example-com.proxy.com")
-        $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . 'proxy' . $proxyHost;
+        $proxySubdomain = str_replace('.', '-', $parsedUrl['host']).'proxy'.$proxyHost;
 
         // Reconstruct the full proxy URL, replacing the original host
-        $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://' . $proxySubdomain, $originalUrl);
+        $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://'.$proxySubdomain, $originalUrl);
 
         // Replace the original URL with the rewritten proxy URL
         return str_replace($originalUrl, $newUrl, $matches[0]);
@@ -51,29 +87,42 @@ function replaceUrlsWithProxy(string $html, string $proxyHost): string {
 
     // Apply the transformation to the HTML content
     return preg_replace_callback($pattern, $callback, $html);
-}
 
-function d(string $type, mixed $content = '', string $color = 'black', bool $force = false): void {
-    if(!DEBUG && !$force) {
+}//end replaceUrlsWithProxy()
+
+
+function d(string $type, mixed $content='', string $color='black', bool $force=false): void
+{
+    if (!DEBUG && !$force) {
         return;
     }
-    echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>" . print_r($content, true) . "</pre><hr />";
-}
 
-function debugStart(string $host): void {
-    if(!DEBUG) {
+    echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>".print_r($content, true)."</pre><hr />";
+
+}//end d()
+
+
+function debugStart(string $host): void
+{
+    if (!DEBUG) {
         return;
     }
+
     echo '<!DOCTYPE html>';
     echo '<html lang="en">';
-    echo '<head><title>' . $host . '</title></head>';
+    echo '<head><title>'.$host.'</title></head>';
     echo '<body>';
-}
 
-function debugEnd(): void {
-    if(!DEBUG) {
+}//end debugStart()
+
+
+function debugEnd(): void
+{
+    if (!DEBUG) {
         return;
     }
+
     echo '</body>';
     echo '</html>';
-}
+
+}//end debugEnd()

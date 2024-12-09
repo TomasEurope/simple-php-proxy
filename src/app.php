@@ -1,5 +1,11 @@
 <?php
-// app.php
+/**
+ * Main file
+ *
+ * @file    app.php
+ * @author  Tomas <studnasoft@gmail.com>
+ * @license https://github.com/tomascc MIT
+ */
 
 // Include a custom utility file for debugging or other helper functions
 require_once '../src/fce.php';
@@ -35,7 +41,7 @@ $app->any('/{path:.*}', function (Request $request, Response $response) {
         $host = $request->getUri()->getHost();
 
         // Transform the host to get the target domain
-        $targetDomain = extractTargetDomain($host);
+        $targetDomain = extractTargetHost($host);
 
         // Build the target URI with the extracted domain
         $uri = $request->getUri()->withHost($targetDomain)->withScheme('https');
