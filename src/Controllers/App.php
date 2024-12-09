@@ -30,7 +30,7 @@ readonly class App
     {
         // Record the start time of the script execution.
         $init = microtime(true);
-        // Init debug
+        // Init debug.
         $this->helper->debugStart(is_string($_SERVER['HTTP_HOST']) ?: '');
         $this->helper->d('Init', date('H:i:s'), 'green');
 
@@ -40,7 +40,7 @@ readonly class App
         // Add error middleware to handle exceptions and debug errors.
         $app->addErrorMiddleware(true, true, true);
 
-        // Define a catch-all route that matches any path
+        // Define a catch-all route that matches any path.
         $app->any(
             '/{path:.*}',
             function (Request $request, Response $response) {
