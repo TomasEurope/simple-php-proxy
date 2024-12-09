@@ -66,9 +66,7 @@ function debugStart(string $host): void {
     }
     echo '<!DOCTYPE html>';
     echo '<html lang="en">';
-    echo '<head>';
-    echo '<title>' . $host . '</title>';
-    echo '</head>';
+    echo '<head><title>' . $host . '</title></head>';
     echo '<body>';
 }
 
