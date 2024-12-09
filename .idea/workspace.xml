@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="CC">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/cc.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Config/MyConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper.php" afterDir="false" />
-    </list>
+    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="CC" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733768992878</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="CC">
+      <option name="closed" value="true" />
+      <created>1733773962762</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733773962762</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

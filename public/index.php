@@ -16,6 +16,9 @@
 
 namespace App;
 
+use function ini_set;
+use function error_reporting;
+
 // Autoload dependencies (Slim, Guzzle, and other packages).
 // TODO Relative path doesn't work...?
 require '/my/proxy/vendor/autoload.php';
@@ -30,6 +33,5 @@ $config = new Config();
 $config->initialize();
 
 // TODO Make Helper static?
-
 $app = new App((new Helper($config)));
 $app->start();
