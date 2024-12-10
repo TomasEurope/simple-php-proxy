@@ -58,7 +58,7 @@ final class Config
              */
             $host = $_SERVER['HTTP_HOST'];
             if (preg_match('/([a-z]+\.[a-z]+)$/', $host, $matches) === false) {
-                throw new RuntimeException('Can\'t extract our proxy host from - ' . $host);
+                throw new RuntimeException('Can\'t exctract our proxy host from - ' . $host);
             }
             $this->proxyHost = $matches[1];
         } else {
