@@ -31,13 +31,15 @@ final class Config
     /**
      * Initialize the configuration settings.
      *
-     * @return void
+     * @return self
      */
-    public function initialize(): void
+    public function initialize(): self
     {
         // Set DEBUG based on header.
         if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah') {
             $this->debug = true;
         }
+
+        return $this;
     }
 }

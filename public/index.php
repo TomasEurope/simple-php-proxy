@@ -33,9 +33,6 @@ if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah
     error_reporting(E_ALL);
 }
 
-$config = new Config();
-$config->initialize();
-
-// TODO Make Helper static?
-$app = new App((new Helper($config)));
+// TODO Hmmm?
+$app = new App((new Helper((new Config())->initialize())));
 $app->start();
