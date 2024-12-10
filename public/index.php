@@ -27,7 +27,7 @@ use function error_reporting;
 /**
  * @psalm-suppress MissingFile
  */
-require __DIR__ . '/../vendor/autoload.php';
+require '/var/www/html/vendor/autoload.php';
 
 if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah') {
     ini_set('display_errors', '1');
