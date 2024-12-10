@@ -23,7 +23,7 @@ use function error_reporting;
 
 // Autoload dependencies (Slim, Guzzle, and other packages).
 // TODO Relative path doesn't work...?
-require '/my/proxy/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah') {
     ini_set('display_errors', '1');
