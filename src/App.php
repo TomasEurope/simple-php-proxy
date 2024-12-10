@@ -85,6 +85,7 @@ final readonly class App
                 $httpClient = new Client();
 
                 try {
+
                     // Extract the host from the incoming request.
                     $host = $request->getUri()->getHost();
 
