@@ -24,7 +24,7 @@ use function error_reporting;
 // Autoload dependencies (Slim, Guzzle, and other packages).
 // TODO Relative path doesn't work...?
 /**
- * @psalm-suppress FileNotFounds
+ * @psalm-suppress MissingFile
  */
 require __DIR__ . '/../vendor/autoload.php';
 
