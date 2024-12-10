@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="CC Final :)">
-      <change afterPath="$PROJECT_DIR$/phpcs.xsd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpcs.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/psalm.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/psalm.xml.dist" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733816889244</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="CC Final :)">
+      <option name="closed" value="true" />
+      <created>1733817089483</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1733817089483</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
