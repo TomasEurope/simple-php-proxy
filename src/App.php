@@ -80,6 +80,7 @@ final readonly class App
         $app->any(
             '/{path:.*}',
             function (Request $request, Response $response) {
+
                 // Create a Guzzle HTTP client for forwarding requests.
                 $httpClient = new Client();
 
@@ -104,6 +105,7 @@ final readonly class App
                     $guzzleRequest['headers']['Host'] = $targetDomain;
 
                     $this->helper->d('Method', $request->getMethod());
+
                     // Include the form data for POST, PUT, or PATCH requests.
                     if (in_array(strtoupper($request->getMethod()), ['POST', 'PUT', 'PATCH']) === true) {
                         $guzzleRequest['form_params'] = $request->getParsedBody();
@@ -135,12 +137,15 @@ final readonly class App
                     $contents = $guzzleResponse->getBody()->getContents();
 
                     if ($this->helper->config->debug === false) {
+
                         // Rewrite hyperlinks in the HTML to route through the proxy.
                         // Replace with your actual proxy domain.
                         $contents = $this->helper->replaceUrlsWithProxy($contents, $this->helper->config->proxyHost);
+
                         // Write the body contents to the response (when not debugging).
                         $response->getBody()->write($contents);
                     } else {
+
                         // Debugging: Output response details.
                         $this->helper->d(
                             'Response code',
@@ -159,11 +164,12 @@ final readonly class App
                         );
                     }
                 } catch (Exception $e) {
+
                     // Handle exceptions during the proxy process.
                     $response = $response->withStatus(599);
                     $this->helper->d('Error', $e->getMessage(), 'red', true);
                     $this->helper->d('Error body', $response, 'red', true);
-                }//end try
+                }
 
                 // Return the final response to the client.
                 return $response;
