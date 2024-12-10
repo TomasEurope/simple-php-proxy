@@ -85,7 +85,6 @@ final readonly class App
                 $httpClient = new Client();
 
                 try {
-
                     // Extract the host from the incoming request.
                     $host = $request->getUri()->getHost();
 
@@ -138,7 +137,6 @@ final readonly class App
                     $contents = $guzzleResponse->getBody()->getContents();
 
                     if ($this->helper->config->debug === false) {
-
                         // Rewrite hyperlinks in the HTML to route through the proxy.
                         // Replace with your actual proxy domain.
                         $contents = $this->helper->replaceUrlsWithProxy($contents, $this->helper->config->proxyHost);
@@ -146,7 +144,6 @@ final readonly class App
                         // Write the body contents to the response (when not debugging).
                         $response->getBody()->write($contents);
                     } else {
-
                         // Debugging: Output response details.
                         $this->helper->d(
                             'Response code',
