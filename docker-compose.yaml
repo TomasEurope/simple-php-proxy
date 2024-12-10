@@ -1,0 +1,10 @@
+services:
+  proxy:
+    image: alpine:3.21.0
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./httpd.conf:/etc/apache2/httpd.conf
+    tty: true
