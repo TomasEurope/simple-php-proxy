@@ -136,9 +136,8 @@ final readonly class App
 
                     if ($this->helper->config->debug === false) {
                         // Rewrite hyperlinks in the HTML to route through the proxy.
-                        $proxyHost = 'proxy.com';
                         // Replace with your actual proxy domain.
-                        $contents = $this->helper->replaceUrlsWithProxy($contents, $proxyHost);
+                        $contents = $this->helper->replaceUrlsWithProxy($contents, $this->helper->config->proxyHost);
                         // Write the body contents to the response (when not debugging).
                         $response->getBody()->write($contents);
                     } else {

@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="psalm-suppress MissingFile">
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="No TODO">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -403,7 +404,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733819180294</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Index classes">
+      <option name="closed" value="true" />
+      <created>1733819419300</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1733819419300</updated>
+    </task>
+    <task id="LOCAL-00029" summary="No TODO">
+      <option name="closed" value="true" />
+      <created>1733819554577</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1733819554577</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +437,9 @@
     <MESSAGE value="CC Final hope :)" />
     <MESSAGE value="CC Script" />
     <MESSAGE value="psalm-suppress MissingFile" />
-    <option name="LAST_COMMIT_MESSAGE" value="psalm-suppress MissingFile" />
+    <MESSAGE value="Index classes" />
+    <MESSAGE value="No TODO" />
+    <option name="LAST_COMMIT_MESSAGE" value="No TODO" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
