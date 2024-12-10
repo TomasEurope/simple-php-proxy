@@ -33,6 +33,5 @@ if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah
     error_reporting(E_ALL);
 }
 
-// TODO Hmmm?
 $app = new App((new Helper((new Config())->initialize())));
 $app->start();
