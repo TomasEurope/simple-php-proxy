@@ -6,5 +6,7 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/html
-      - ./httpd.conf:/etc/apache2/httpd.conf
+      - type: bind
+        source: ./httpd.conf
+        target: /etc/apache2/httpd.conf
     tty: true
