@@ -18,6 +18,8 @@ declare(strict_types=1);
 
 namespace App;
 
+use Exception;
+
 use function ini_set;
 use function error_reporting;
 
@@ -33,5 +35,9 @@ if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah
     error_reporting(E_ALL);
 }
 
-$app = new App((new Helper((new Config())->initialize())));
-$app->start();
+try {
+    $app = new App((new Helper((new Config())->initialize())));
+    $app->start();
+} catch (Exception $e) {
+    echo "<pre>" . print_r($e, true) . "</pre>";
+}

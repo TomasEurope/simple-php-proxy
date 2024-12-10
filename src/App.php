@@ -165,7 +165,6 @@ final readonly class App
                         );
                     }
                 } catch (Exception $e) {
-
                     // Handle exceptions during the proxy process.
                     $response = $response->withStatus(599);
                     $this->helper->d('Error', $e->getMessage(), 'red', true);

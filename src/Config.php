@@ -51,20 +51,22 @@ final class Config
             $this->debug = true;
         }
 
-        if (isset($_SERVER['HTTP_HOST']) === true && empty($this->proxyHost) !== true) {
+        if (isset($_SERVER['HTTP_HOST']) === true) {
             /**
              * @psalm-suppress UnnecessaryVarAnnotation
              * @var string $host
              */
             $host = $_SERVER['HTTP_HOST'];
-            preg_match('/([a-z]+\.[a-z]+)$/', $host, $matches);
-            if (count($matches) === 2) {
+            if (preg_match('/([a-z]+\.[a-z]+)$/', $host, $matches) === false) {
+                throw new RuntimeException('Can\'t exctract our proxy host from ' . $host);
+            }
+            if (count($matches) === 2 && empty($matches[1]) !== true) {
                 $this->proxyHost = $matches[1];
             } else {
-                throw new RuntimeException();
+                throw new RuntimeException('Can\'t exctract our proxy host from ' . $host);
             }
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException('Undefined HTTP_HOST - ' . $this->proxyHost);
         }
 
         return $this;

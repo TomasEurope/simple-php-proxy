@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="No TODO">
+    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="App CC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config.php" afterDir="false" />
     </list>
@@ -420,7 +421,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733819554577</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Config">
+      <option name="closed" value="true" />
+      <created>1733821532071</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1733821532071</updated>
+    </task>
+    <task id="LOCAL-00031" summary="App CC">
+      <option name="closed" value="true" />
+      <created>1733821649468</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1733821649468</updated>
+    </task>
+    <task id="LOCAL-00032" summary="App CC">
+      <option name="closed" value="true" />
+      <created>1733821699784</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1733821699784</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +464,9 @@
     <MESSAGE value="psalm-suppress MissingFile" />
     <MESSAGE value="Index classes" />
     <MESSAGE value="No TODO" />
-    <option name="LAST_COMMIT_MESSAGE" value="No TODO" />
+    <MESSAGE value="Config" />
+    <MESSAGE value="App CC" />
+    <option name="LAST_COMMIT_MESSAGE" value="App CC" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
