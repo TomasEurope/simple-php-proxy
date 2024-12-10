@@ -11,6 +11,8 @@
  * @license https://github.com/tomascc MIT
  */
 
+declare(strict_types=1);
+
 namespace App;
 
 // Use PSR-7 interfaces for handling HTTP requests and responses.
@@ -48,14 +50,24 @@ final readonly class App
      */
     public function start(): void
     {
+
         // Record the start time of the script execution.
         $init = microtime(true);
-        if (is_string($_SERVER['HTTP_HOST']) === false || empty(trim($_SERVER['HTTP_HOST'])) === true) {
+
+        /**
+         * @psalm-suppress UnnecessaryVarAnnotation
+         * @var string $host
+         */
+        $host = $_SERVER['HTTP_HOST'] ?? '';
+
+        if (
+            empty($host) === true
+        ) {
             throw new RuntimeException();
         }
 
         // Init debug.
-        $this->helper->debugStart($_SERVER['HTTP_HOST']);
+        $this->helper->debugStart($host);
         $this->helper->d('Init', date('H:i:s'), 'green');
 
         // Create a new Slim application instance.

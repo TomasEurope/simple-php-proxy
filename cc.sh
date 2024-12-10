@@ -1,3 +1,4 @@
+clear
 
 vendor/bin/psalm --show-info=true
 

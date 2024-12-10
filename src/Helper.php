@@ -40,7 +40,6 @@ readonly final class Helper
     {
     }
 
-
     /**
      * Extracts the target host from a proxy-formatted host.
      *
@@ -54,13 +53,15 @@ readonly final class Helper
     {
         $pattern = '/^(?<host>.+?)-(?<tld>.+?)\.proxy\.com$/';
 
+        // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {
+            // Combine matched groups to form the original host.
             return $matches['host'] . '.' . $matches['tld'];
         }
 
+        // Throw an exception if the host doesn't match the expected format.
         throw new RuntimeException('Invalid host format');
     }
-
 
     /**
      * Rewrites URLs in specific HTML attributes to route them through the proxy.
@@ -77,7 +78,7 @@ readonly final class Helper
             'src',
             'action',
         ];
-        $tags       = [
+        $tags = [
             'a',
             'img',
             'script',
@@ -85,10 +86,13 @@ readonly final class Helper
             'form',
         ];
 
-        $pattern = '/<(' . implode('|', $tags) . ')\s+[^>]*?(?:' . \implode('|', $attributes) . ')="([^"]+)"/i';
+        // Regex pattern to find specified attributes in specific tags.
+        $pattern = '/<(' . implode('|', $tags) . ')\s+[^>]*?(?:' . implode('|', $attributes) . ')="([^"]+)"/i';
 
         $callback = static function (array $matches) use ($proxyHost): string {
             $originalUrl = $matches[2];
+
+            // Validate and parse the original URL.
             if (
                 isset($originalUrl) === false
                 || is_string($originalUrl) === false
@@ -99,15 +103,37 @@ readonly final class Helper
 
             $parsedUrl = parse_url($originalUrl);
 
+            // Ensure the URL contains a valid host.
+            if (isset($parsedUrl['host']) === false) {
+                throw new RuntimeException();
+            }
+
+            // Construct a proxy subdomain.
             $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
+
+            // Rewrite the URL to route through the proxy.
             $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://' . $proxySubdomain, $originalUrl);
 
-            return str_replace($originalUrl, $newUrl, $matches[0]);
+            // Make sure we have only string types
+            if (is_string($newUrl) === false || is_string($matches[0]) === false) {
+                throw new RuntimeException();
+            }
+
+            // Ensure final URL replacement is valid and return the updated string.
+            $finalUrl = str_replace($originalUrl, $newUrl, $matches[0]);
+            if (empty($finalUrl)) {
+                throw new RuntimeException();
+            }
+            return $finalUrl;
         };
 
-        return preg_replace_callback($pattern, $callback, $html);
+        // Apply the callback to replace matching patterns in the HTML.
+        $result = preg_replace_callback($pattern, $callback, $html);
+        if (is_null($result) === true || empty($result) === true) {
+            throw new RuntimeException();
+        }
+        return $result;
     }
-
 
     /**
      * Outputs debugging information in HTML format.
@@ -125,13 +151,14 @@ readonly final class Helper
         string $color = 'black',
         bool $force = false
     ): void {
+        // Skip output if not in debug mode and force is false.
         if ($this->config->debug === false && $force === false) {
             return;
         }
 
+        // Output debug message in a formatted HTML block.
         echo "<hr><h3 style='color: {$color}'>{$type}</h3><pre>" . print_r($content, true) . '</pre><hr />';
     }
-
 
     /**
      * Starts an HTML debug output.
@@ -142,14 +169,18 @@ readonly final class Helper
      */
     public function debugStart(string $host): void
     {
+        // Output the start of an HTML debug page if not in debug mode.
         if ($this->config->debug === true) {
             return;
+        }
+
+        if (empty($host) === true) {
+            throw new RuntimeException();
         }
 
         echo '<!DOCTYPE html><html lang="en">';
         echo '<head><title>' . htmlspecialchars($host, ENT_QUOTES, 'UTF-8') . '</title></head><body>';
     }
-
 
     /**
      * Ends an HTML debug output.
@@ -158,6 +189,7 @@ readonly final class Helper
      */
     public function debugEnd(): void
     {
+        // Output the end of an HTML debug page if not in debug mode.
         if ($this->config->debug === true) {
             return;
         }
