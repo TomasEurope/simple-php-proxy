@@ -63,7 +63,7 @@ final readonly class App
         if (
             empty($host) === true
         ) {
-            throw new RuntimeException();
+            throw new RuntimeException('Undefined HTTP_HOST');
         }
 
         // Init debug.
@@ -164,7 +164,8 @@ final readonly class App
                 } catch (Exception $e) {
                     // Handle exceptions during the proxy process.
                     $response = $response->withStatus(599);
-                    $this->helper->d('Error', $e->getMessage(), 'red', true);
+                    $this->helper->d('Target', ($targetDomain ?? ''), 'red', true);
+                    $this->helper->d('Error', print_r($e, true), 'red', true);
                     $this->helper->d('Error body', $response, 'red', true);
                 }
 

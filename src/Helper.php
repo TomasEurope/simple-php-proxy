@@ -51,16 +51,16 @@ readonly final class Helper
      */
     public function extractTargetHost(string $host): string
     {
-        $pattern = '/^(?<host>.+?)-(?<tld>.+?)\.proxy\.com$/';
+        $pattern = '/^(?<host>.+)\.[a-z]+\.[a-z]+$/';
 
         // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {
             // Combine matched groups to form the original host.
-            return $matches['host'] . '.' . $matches['tld'];
+            return str_replace('-', '.', $matches['host']);
         }
 
         // Throw an exception if the host doesn't match the expected format.
-        throw new RuntimeException('Invalid host format');
+        throw new RuntimeException('Invalid host format - ' . $host);
     }
 
     /**
@@ -73,67 +73,58 @@ readonly final class Helper
      */
     public function replaceUrlsWithProxy(string $html, string $proxyHost): string
     {
-        $attributes = [
-            'href',
-            'src',
-            'action',
-        ];
-        $tags = [
-            'a',
-            'img',
-            'script',
-            'link',
-            'form',
-        ];
+        $attributes = ['href', 'src', 'action'];
+        $tags = ['a', 'img', 'script', 'link', 'form'];
 
         // Regex pattern to find specified attributes in specific tags.
-        $pattern = '/<(' . implode('|', $tags) . ')\s+[^>]*?(?:' . implode('|', $attributes) . ')="([^"]+)"/i';
+        $pattern = '/<(' . implode('|', $tags) . ')\b[^>]*\b(' . implode('|', $attributes) . ')="([^"]+)"/i';
 
         $callback = static function (array $matches) use ($proxyHost): string {
-            $originalUrl = $matches[2];
+            $originalUrl = $matches[3];
 
-            // Validate and parse the original URL.
-            if (
-                isset($originalUrl) === false
-                || is_string($originalUrl) === false
-                || empty(trim($originalUrl)) === true
-            ) {
-                throw new RuntimeException();
+            // Parse and process the URL
+            if (strpos($originalUrl, '//') === 0) {
+                // URLs starting with //
+                $parsedUrl = parse_url('https:' . $originalUrl);
+            } elseif (parse_url($originalUrl, PHP_URL_SCHEME) === null) {
+                // Relative URLs - leave them unchanged
+                return $matches[0];
+            } else {
+                $parsedUrl = parse_url($originalUrl);
             }
 
-            $parsedUrl = parse_url($originalUrl);
+            // Rewrite only if the URL has a host
+            if (isset($parsedUrl['host'])) {
+                $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
 
-            // Ensure the URL contains a valid host.
-            if (isset($parsedUrl['host']) === false) {
-                throw new RuntimeException();
+                $newUrl = $parsedUrl['scheme'] . '://' . $proxySubdomain;
+
+                if (isset($parsedUrl['path'])) {
+                    $newUrl .= $parsedUrl['path'];
+                }
+                if (isset($parsedUrl['query'])) {
+                    $newUrl .= '?' . $parsedUrl['query'];
+                }
+                if (isset($parsedUrl['fragment'])) {
+                    $newUrl .= '#' . $parsedUrl['fragment'];
+                }
+
+                return str_replace($originalUrl, $newUrl, $matches[0]);
             }
 
-            // Construct a proxy subdomain.
-            $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
-
-            // Rewrite the URL to route through the proxy.
-            $newUrl = preg_replace('/^https?:\/\/[^\/]+/', 'https://' . $proxySubdomain, $originalUrl);
-
-            // Make sure we have only string types
-            if (is_string($newUrl) === false || is_string($matches[0]) === false) {
-                throw new RuntimeException();
-            }
-
-            // Ensure final URL replacement is valid and return the updated string.
-            $finalUrl = str_replace($originalUrl, $newUrl, $matches[0]);
-            if (empty($finalUrl)) {
-                throw new RuntimeException();
-            }
-            return $finalUrl;
+            // Return unchanged tag if no host is found
+            return $matches[0];
         };
 
         // Apply the callback to replace matching patterns in the HTML.
         $result = preg_replace_callback($pattern, $callback, $html);
-        if (is_null($result) === true || empty($result) === true) {
-            throw new RuntimeException();
+
+        if ($result === null) {
+            throw new RuntimeException('Regex error or invalid input.');
         }
         return $result;
     }
+
 
     /**
      * Outputs debugging information in HTML format.
@@ -175,7 +166,7 @@ readonly final class Helper
         }
 
         if (empty($host) === true) {
-            throw new RuntimeException();
+            throw new RuntimeException('Undefined host');
         }
 
         echo '<!DOCTYPE html><html lang="en">';
