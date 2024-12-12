@@ -21,6 +21,9 @@ namespace App;
 use Exception;
 
 // Autoload dependencies (Slim, Guzzle, and other packages).
+/**
+ * @psalm-suppress MissingFile
+ */
 require __DIR__ . '/../vendor/autoload.php';
 
 if (isset($_SERVER['HTTP_X_FUCK']) === true && $_SERVER['HTTP_X_FUCK'] === 'yeah') {
