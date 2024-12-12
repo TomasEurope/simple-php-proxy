@@ -18,6 +18,7 @@
   chmod +x ./bin/*
   sudo -H -u www-data bash -c 'cd /var/www/html && mkdir logs'
   sudo -H -u www-data bash -c 'cd /var/www/html && composer install'
+  a2enmod ssl
 
   systemctl enable apache2
   systemctl start apache2

@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="Bins">
+      <change afterPath="$PROJECT_DIR$/apache2/default.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache2/domain.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/domain.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/domain.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/install.sh" afterDir="false" />
@@ -139,7 +142,7 @@
     "WebServerToolWindowPanel.toolwindow.show.date": "false",
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "com.google.cloudcode.ide_session_index": "20241212_0002",
+    "com.google.cloudcode.ide_session_index": "20241212_0004",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/my/proxy",
     "node.js.detected.package.eslint": "true",
@@ -193,15 +196,8 @@
       <workItem from="1733913225055" duration="1692000" />
       <workItem from="1733927503158" duration="8030000" />
       <workItem from="1733989399556" duration="9625000" />
-      <workItem from="1734023842054" duration="1704000" />
-    </task>
-    <task id="LOCAL-00002" summary="Nicer code">
-      <option name="closed" value="true" />
-      <created>1733605088418</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1733605088418</updated>
+      <workItem from="1734023842054" duration="3117000" />
+      <workItem from="1734030214153" duration="1129000" />
     </task>
     <task id="LOCAL-00003" summary="Replace URLs in PHP&#10;// TODO JavaScript">
       <option name="closed" value="true" />
@@ -587,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734024892049</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Bins">
+      <option name="closed" value="true" />
+      <created>1734026367815</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1734026367815</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
