@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="Psalm">
-      <change afterPath="$PROJECT_DIR$/bin/domain.sh" afterDir="false" />
+    <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="Bins">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/noDocker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/install.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/domain.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/domain.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/install.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +36,8 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/bin/domain.sh" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/bin/install.sh" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/httpd.conf" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/logs/access.log" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/logs/error.log" root0="FORCE_HIGHLIGHTING" />
@@ -191,15 +193,7 @@
       <workItem from="1733913225055" duration="1692000" />
       <workItem from="1733927503158" duration="8030000" />
       <workItem from="1733989399556" duration="9625000" />
-      <workItem from="1734023842054" duration="924000" />
-    </task>
-    <task id="LOCAL-00001" summary="Init">
-      <option name="closed" value="true" />
-      <created>1733603102388</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1733603102388</updated>
+      <workItem from="1734023842054" duration="1704000" />
     </task>
     <task id="LOCAL-00002" summary="Nicer code">
       <option name="closed" value="true" />
@@ -585,7 +579,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734023938477</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Bins">
+      <option name="closed" value="true" />
+      <created>1734024892049</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1734024892049</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,7 +625,8 @@
     <MESSAGE value="noDocker" />
     <MESSAGE value="noDocker &amp; JS URL replace" />
     <MESSAGE value="Psalm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Psalm" />
+    <MESSAGE value="Bins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bins" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

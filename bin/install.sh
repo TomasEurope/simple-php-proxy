@@ -15,6 +15,7 @@
   chown -R www-data:www-data /var/www/html
   git config --global --add safe.directory /var/www/html
   git clone https://github.com/TomasEurope/simple-php-proxy .
+  chmod +x ./bin/*
   sudo -H -u www-data bash -c 'cd /var/www/html && mkdir logs'
   sudo -H -u www-data bash -c 'cd /var/www/html && composer install'
 
