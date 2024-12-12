@@ -93,6 +93,12 @@ readonly final class Helper
                 $parsedUrl = parse_url($originalUrl);
             }
 
+            // Check if the URL is already rewritten to the proxy
+            if (isset($parsedUrl['host']) && str_ends_with($parsedUrl['host'], $proxyHost)) {
+                // If already rewritten, return the original tag without modification
+                return $originalUrl;
+            }
+
             // Rewrite only if the URL has a host
             if (isset($parsedUrl['host'])) {
                 $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
@@ -109,6 +115,7 @@ readonly final class Helper
                     $newUrl .= '#' . $parsedUrl['fragment'];
                 }
 
+                // Return the updated tag with the rewritten URL
                 return str_replace($originalUrl, $newUrl, $matches[0]);
             }
 
@@ -123,6 +130,19 @@ readonly final class Helper
             throw new RuntimeException('Regex error or invalid input.');
         }
         return $result;
+    }
+
+
+    /**
+     * Insert our JavaScript to replace URLs on the fly
+     *
+     * @param string $html
+     *
+     * @return string
+     */
+    public function insertScript(string $html): string
+    {
+        return (string) preg_replace('/\<body[^>]*\>/', '<body><script src="https://' . $this->config->proxyHost . '/script.js"></script>', $html);
     }
 
 
@@ -161,7 +181,7 @@ readonly final class Helper
     public function debugStart(string $host): void
     {
         // Output the start of an HTML debug page if not in debug mode.
-        if ($this->config->debug === true) {
+        if ($this->config->debug === false) {
             return;
         }
 
@@ -181,7 +201,7 @@ readonly final class Helper
     public function debugEnd(): void
     {
         // Output the end of an HTML debug page if not in debug mode.
-        if ($this->config->debug === true) {
+        if ($this->config->debug === false) {
             return;
         }
 

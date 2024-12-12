@@ -141,6 +141,11 @@ final readonly class App
                         // Replace with your actual proxy domain.
                         $contents = $this->helper->replaceUrlsWithProxy($contents, $this->helper->config->proxyHost);
 
+                        // Insert our JavaScript script.
+                        $contents = $this->helper->insertScript($contents);
+
+                        $response = $response->withHeader('content-security-policy', '*');
+
                         // Write the body contents to the response (when not debugging).
                         $response->getBody()->write($contents);
                     } else {
@@ -163,14 +168,20 @@ final readonly class App
                     }
                 } catch (Exception $e) {
                     // Handle exceptions during the proxy process.
-                    $response = $response->withStatus(599);
+                    $response = $response->withStatus(513);
                     $this->helper->d('Target', ($targetDomain ?? ''), 'red', true);
                     $this->helper->d('Error', print_r($e, true), 'red', true);
                     $this->helper->d('Error body', $response, 'red', true);
                 }
 
                 // Return the final response to the client.
-                return $response;
+                $return = $response
+                    ->withoutHeader('Content-Encoding')
+                    ->withoutHeader('Transfer-Encoding')
+                    ->withoutHeader('X-Encoded-Content-Encoding')
+                    ;
+
+                return $return;
             }
         );
 
