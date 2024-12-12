@@ -37,6 +37,12 @@ final class Config
      * @var string
      */
     public string $proxyHost = '';
+    /**
+     * The file path where the application logs will be stored.
+     *
+     * @var string
+     */
+    public string $logPath = __DIR__ . '/../logs/my.log';
 
 
     /**

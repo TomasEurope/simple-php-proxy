@@ -169,9 +169,11 @@ final readonly class App
                 } catch (Exception $e) {
                     // Handle exceptions during the proxy process.
                     $response = $response->withStatus(513);
+
                     $this->helper->d('Target', ($targetDomain ?? ''), 'red', true);
                     $this->helper->d('Error', print_r($e, true), 'red', true);
                     $this->helper->d('Error body', $response, 'red', true);
+                    $this->helper->log($e);
                 }
 
                 // Return the final response to the client.

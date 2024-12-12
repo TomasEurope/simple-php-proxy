@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use Exception;
 use RuntimeException;
 
 use function htmlspecialchars;
@@ -142,7 +143,11 @@ readonly final class Helper
      */
     public function insertScript(string $html): string
     {
-        return (string) preg_replace('/\<body[^>]*\>/', '<body><script src="https://' . $this->config->proxyHost . '/script.js"></script>', $html);
+        return (string) preg_replace(
+            '/\<body[^>]*\>/',
+            '<body><script src="https://' . $this->config->proxyHost . '/script.js"></script>',
+            $html
+        );
     }
 
 
@@ -207,4 +212,17 @@ readonly final class Helper
 
         echo '</body></html>';
     }
+
+    /**
+     * Logs exception details to a specified file.
+     *
+     * @param Exception $e The exception to be logged.
+     * @return void
+     */
+    public function log(Exception $e): void
+    {
+        $line = date('d.m.Y H:i:s') . ' - ' . $e->getCode() . ' - ' . explode(" response", $e->getMessage())[0];
+        file_put_contents($this->config->logPath, $line . PHP_EOL, FILE_APPEND | LOCK_EX);
+    }
+
 }
