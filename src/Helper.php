@@ -19,17 +19,6 @@ namespace App;
 use Exception;
 use RuntimeException;
 
-use function htmlspecialchars;
-use function implode;
-use function parse_url;
-use function preg_match;
-use function preg_replace;
-use function preg_replace_callback;
-use function print_r;
-use function str_replace;
-
-use const ENT_QUOTES;
-
 readonly final class Helper
 {
     /**

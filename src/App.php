@@ -23,12 +23,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use RuntimeException;
 use Slim\Factory\AppFactory;
 
-use function microtime;
-use function htmlentities;
-use function in_array;
-use function strlen;
-use function date;
-
 final readonly class App
 {
     /**

@@ -17,7 +17,6 @@ namespace App;
 
 use RuntimeException;
 
-use function preg_match;
 
 /**
  * Configuration class for global settings.
