@@ -36,7 +36,7 @@
 
             // If the URL has a host, rewrite it for the proxy
             if (parsedUrl.hostname) {
-                const proxySubdomain = parsedUrl.hostname.replace(/\./g, 'xxx') + '.' + proxyHost;
+                const proxySubdomain = parsedUrl.hostname.replace(/\./g, 'xyx') + '.' + proxyHost;
                 return `${parsedUrl.protocol}//${proxySubdomain}${parsedUrl.pathname}${parsedUrl.search}${parsedUrl.hash}`;
             }
         } catch (e) {
