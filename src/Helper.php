@@ -43,6 +43,9 @@ readonly final class Helper
     {
         $pattern = '/^(?<host>.+)\.[a-z]+\.[a-z]+$/';
 
+        if ($host === $this->config->proxyHost || $host === 'www.' . $this->config->proxyHost) {
+            return 'www.startpage.com';
+        }
         // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {
             // Combine matched groups to form the original host.
@@ -91,7 +94,11 @@ readonly final class Helper
 
             // Rewrite only if the URL has a host
             if (isset($parsedUrl['host'])) {
-                $proxySubdomain = str_replace('.', 'xix', $parsedUrl['host']) . '.' . $proxyHost;
+                if($parsedUrl['host'] !== $proxyHost) {
+                    $proxySubdomain = str_replace('.', 'xix', $parsedUrl['host']) . '.' . $proxyHost;
+                } else {
+                    $proxySubdomain = $proxyHost;
+                }
 
                 $newUrl = $parsedUrl['scheme'] . '://' . $proxySubdomain;
 

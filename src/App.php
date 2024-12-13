@@ -166,10 +166,18 @@ final readonly class App
                     // Handle exceptions during the proxy process.
                     $response = $response->withStatus(513);
 
+                    $this->helper->log($e);
+
+                    // TODO search predefined keywords from config
+                    $redirect = '/do/search?query=' . str_replace(['xix', '.', '-'], ' ', $targetDomain ?? 'actual news');
+
+                    header('Location: https://'. $this->helper->config->proxyHost . $redirect);
+                    exit;
+
+                    // TODO
                     $this->helper->d('Target', ($targetDomain ?? ''), 'red', true);
                     $this->helper->d('Error', print_r($e, true), 'red', true);
                     $this->helper->d('Error body', $response, 'red', true);
-                    $this->helper->log($e);
                 }
 
                 // Return the final response to the client.
