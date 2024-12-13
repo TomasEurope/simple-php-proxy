@@ -46,7 +46,7 @@ readonly final class Helper
         // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {
             // Combine matched groups to form the original host.
-            return str_replace('-', '.', $matches['host']);
+            return str_replace('xxx', '.', $matches['host']);
         }
 
         // Throw an exception if the host doesn't match the expected format.
@@ -86,12 +86,12 @@ readonly final class Helper
             // Check if the URL is already rewritten to the proxy
             if (isset($parsedUrl['host']) && str_ends_with($parsedUrl['host'], $proxyHost)) {
                 // If already rewritten, return the original tag without modification
-                return $originalUrl;
+                return $matches[0];
             }
 
             // Rewrite only if the URL has a host
             if (isset($parsedUrl['host'])) {
-                $proxySubdomain = str_replace('.', '-', $parsedUrl['host']) . '.' . $proxyHost;
+                $proxySubdomain = str_replace('.', 'xxx', $parsedUrl['host']) . '.' . $proxyHost;
 
                 $newUrl = $parsedUrl['scheme'] . '://' . $proxySubdomain;
 
