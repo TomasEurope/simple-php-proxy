@@ -82,6 +82,8 @@ final readonly class App
                     // Extract the host from the incoming request.
                     $host = $request->getUri()->getHost();
 
+
+
                     // Transform the host to get the target domain.
                     $targetDomain = $this->helper->extractTargetHost($host);
 
