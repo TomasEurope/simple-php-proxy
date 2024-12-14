@@ -217,7 +217,7 @@ readonly final class Helper
      */
     public function log(Exception $e, string $redirect = ''): void
     {
-        $line = date('d.m.Y H:i:s') . ' - ' . $e->getCode() . ' - ' . $this->config->proxyHost . ' - ' . explode(" response", $e->getMessage())[0];
+        $line = date('d.m.Y H:i:s') . ' - ' . $e->getCode() . ' - ' . $this->config->proxyHost . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . explode(" response", $e->getMessage())[0];
         if (!empty($redirect)){
             $line = $line . PHP_EOL . ' - ' . $redirect;
         }
