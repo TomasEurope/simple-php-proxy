@@ -95,7 +95,8 @@ final readonly class App
                     $guzzleRequest = [
                         'headers' => $request->getHeaders(),
                         'body'    => $request->getBody(),
-                        'allow_redirects' => false
+                        // TODO
+                        //'allow_redirects' => false
                     ];
 
                     // Set the Host header to match the target domain.
