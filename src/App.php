@@ -73,7 +73,7 @@ final readonly class App
         // Define a catch-all route that matches any path.
         $app->any(
             '/{path:.*}',
-            function (Request $request, Response $response) {
+            function (Request $request, Response $response, array $args) {
 
                 // Create a Guzzle HTTP client for forwarding requests.
                 $httpClient = new Client();
@@ -95,6 +95,7 @@ final readonly class App
                     $guzzleRequest = [
                         'headers' => $request->getHeaders(),
                         'body'    => $request->getBody(),
+                        'allow_redirects' => false
                     ];
 
                     // Set the Host header to match the target domain.
@@ -166,10 +167,11 @@ final readonly class App
                     // Handle exceptions during the proxy process.
                     $response = $response->withStatus(513);
 
-                    $this->helper->log($e);
-
                     // TODO search predefined keywords from config
-                    $redirect = '/search?q=' . str_replace(['xix', '.', '-'], ' ', $targetDomain ?? 'actual news');
+                    $search = $targetDomain ?? 'actual news' . ' ' . $args['path'] ? (string) $args['path'] : '';
+                    $redirect = '/?q=' . preg_replace('/[^a-zA-Z0-9]++/', ' ', $search);
+
+                    $this->helper->log($e, $redirect);
 
                     header('Location: https://'. $this->helper->config->proxyHost . $redirect);
                     exit;

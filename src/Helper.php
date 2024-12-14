@@ -44,7 +44,7 @@ readonly final class Helper
         $pattern = '/^(?<host>.+)\.[a-z]+\.[a-z]+$/';
 
         if ($host === $this->config->proxyHost || $host === 'www.' . $this->config->proxyHost) {
-            return 'search.rhscz.eu';
+            return 'searx.neocities.org';
         }
         // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {
@@ -215,9 +215,12 @@ readonly final class Helper
      * @param Exception $e The exception to be logged.
      * @return void
      */
-    public function log(Exception $e): void
+    public function log(Exception $e, string $redirect = ''): void
     {
-        $line = date('d.m.Y H:i:s') . ' - ' . $e->getCode() . ' - ' . explode(" response", $e->getMessage())[0];
+        $line = date('d.m.Y H:i:s') . ' - ' . $e->getCode() . ' - ' . $this->config->proxyHost . ' - ' . explode(" response", $e->getMessage())[0];
+        if (!empty($redirect)){
+            $line = $line . PHP_EOL . ' - ' . $redirect;
+        }
         file_put_contents($this->config->logPath, $line . PHP_EOL, FILE_APPEND | LOCK_EX);
     }
 
