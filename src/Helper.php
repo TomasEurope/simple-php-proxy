@@ -44,7 +44,7 @@ readonly final class Helper
         $pattern = '/^(?<host>.+)\.[a-z]+\.[a-z]+$/';
 
         if ($host === $this->config->proxyHost || $host === 'www.' . $this->config->proxyHost) {
-            return 'www.startpage.com';
+            return 'search.rhscz.eu';
         }
         // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {

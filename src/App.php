@@ -169,7 +169,7 @@ final readonly class App
                     $this->helper->log($e);
 
                     // TODO search predefined keywords from config
-                    $redirect = '/do/search?query=' . str_replace(['xix', '.', '-'], ' ', $targetDomain ?? 'actual news');
+                    $redirect = '/search?q=' . str_replace(['xix', '.', '-'], ' ', $targetDomain ?? 'actual news');
 
                     header('Location: https://'. $this->helper->config->proxyHost . $redirect);
                     exit;
