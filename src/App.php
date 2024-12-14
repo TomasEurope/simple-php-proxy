@@ -168,8 +168,8 @@ final readonly class App
                     $response = $response->withStatus(513);
 
                     // TODO search predefined keywords from config
-                    $search = $targetDomain ?? 'actual news' . ' ' . $args['path'] ? (string) $args['path'] : '';
-                    $redirect = '/?q=' . preg_replace('/[^a-zA-Z0-9]++/', ' ', $search);
+                    $search =  preg_replace('/[^a-zA-Z0-9]++/', ' ', ($targetDomain ?? 'actual news' . ' ' . $args['path'] ? (string) $args['path'] : ''));
+                    $redirect = '/?q=' . (empty($search) === false ? $search : 'world news');
 
                     $this->helper->log($e, $redirect);
 

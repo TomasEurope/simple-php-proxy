@@ -44,7 +44,7 @@ readonly final class Helper
         $pattern = '/^(?<host>.+)\.[a-z]+\.[a-z]+$/';
 
         if ($host === $this->config->proxyHost || $host === 'www.' . $this->config->proxyHost) {
-            return 'searx.neocities.org';
+            return (new Searx())->getSearchEngineDomain();
         }
         // Match the host against the proxy format pattern.
         if ((bool) preg_match($pattern, $host, $matches) === true) {

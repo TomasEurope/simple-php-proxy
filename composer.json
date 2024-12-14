@@ -7,7 +7,8 @@
     "require": {
         "slim/slim": "^4.14",
         "nyholm/psr7": "^1.8",
-        "guzzlehttp/guzzle": "^7.9"
+        "guzzlehttp/guzzle": "^7.9",
+        "ext-memcached": "*"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",

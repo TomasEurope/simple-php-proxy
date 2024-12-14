@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="Base">
+      <change afterPath="$PROJECT_DIR$/src/Searx.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +141,7 @@
     "WebServerToolWindowPanel.toolwindow.show.date": "false",
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "com.google.cloudcode.ide_session_index": "20241213_0001",
+    "com.google.cloudcode.ide_session_index": "20241214_0003",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/my/proxy",
     "node.js.detected.package.eslint": "true",
@@ -195,31 +197,9 @@
       <workItem from="1733989399556" duration="9625000" />
       <workItem from="1734023842054" duration="3117000" />
       <workItem from="1734030214153" duration="4571000" />
-      <workItem from="1734088887023" duration="7557000" />
-    </task>
-    <task id="LOCAL-00011" summary="CC">
-      <option name="closed" value="true" />
-      <created>1733768261879</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1733768261879</updated>
-    </task>
-    <task id="LOCAL-00012" summary="CC">
-      <option name="closed" value="true" />
-      <created>1733768992878</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1733768992878</updated>
-    </task>
-    <task id="LOCAL-00013" summary="CC">
-      <option name="closed" value="true" />
-      <created>1733773962762</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1733773962762</updated>
+      <workItem from="1734088887023" duration="9789000" />
+      <workItem from="1734169812006" duration="1751000" />
+      <workItem from="1734172058751" duration="7182000" />
     </task>
     <task id="LOCAL-00014" summary="CC">
       <option name="closed" value="true" />
@@ -589,7 +569,31 @@
       <option name="project" value="LOCAL" />
       <updated>1734123677584</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734123805660</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1734123805660</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734171918067</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1734171918068</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734200218503</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1734200218503</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
