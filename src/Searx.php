@@ -43,9 +43,9 @@ final class Searx
             $this->memcached->set(self::CACHE_KEY, $urls, self::CACHE_TTL);
         }
 
-        if (random_int(0, 5) === 0) {
+        /*if (random_int(0, 5) === 0) {
             return 'en.wikipedia.org';
-        }
+        }*/
 
         return parse_url($urls[array_rand($urls)])['host'];
     }

@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf718969-284e-454f-a53f-33acefaf9211" name="Changes" comment="Base">
-      <change afterPath="$PROJECT_DIR$/src/Searx.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Searx.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Searx.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +141,7 @@
     "WebServerToolWindowPanel.toolwindow.show.date": "false",
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "com.google.cloudcode.ide_session_index": "20241214_0003",
+    "com.google.cloudcode.ide_session_index": "20241215_0001",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/my/proxy",
     "node.js.detected.package.eslint": "true",
@@ -199,39 +199,8 @@
       <workItem from="1734030214153" duration="4571000" />
       <workItem from="1734088887023" duration="9789000" />
       <workItem from="1734169812006" duration="1751000" />
-      <workItem from="1734172058751" duration="7182000" />
-    </task>
-    <task id="LOCAL-00014" summary="CC">
-      <option name="closed" value="true" />
-      <created>1733774952218</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1733774952218</updated>
-    </task>
-    <task id="LOCAL-00015" summary="CC">
-      <option name="closed" value="true" />
-      <created>1733775021165</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1733775021165</updated>
-    </task>
-    <task id="LOCAL-00016" summary="CC">
-      <option name="closed" value="true" />
-      <created>1733775956679</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1733775956679</updated>
-    </task>
-    <task id="LOCAL-00017" summary="CC Final :)">
-      <option name="closed" value="true" />
-      <created>1733816889244</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1733816889244</updated>
+      <workItem from="1734172058751" duration="9967000" />
+      <workItem from="1734247855731" duration="1176000" />
     </task>
     <task id="LOCAL-00018" summary="CC Final :)">
       <option name="closed" value="true" />
@@ -593,7 +562,39 @@
       <option name="project" value="LOCAL" />
       <updated>1734200218503</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734204219234</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1734204219235</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734204572857</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1734204572858</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734205517111</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1734205517111</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Base">
+      <option name="closed" value="true" />
+      <created>1734210562180</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1734210562180</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
